@@ -20,6 +20,11 @@ export namespace Components {
          */
         "middle": string;
     }
+    interface PesonalCard {
+        "firstName": string;
+        "lastName": string;
+        "photo": string;
+    }
 }
 declare global {
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
@@ -28,8 +33,15 @@ declare global {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
+    interface HTMLPesonalCardElement extends Components.PesonalCard, HTMLStencilElement {
+    }
+    var HTMLPesonalCardElement: {
+        prototype: HTMLPesonalCardElement;
+        new (): HTMLPesonalCardElement;
+    };
     interface HTMLElementTagNameMap {
         "my-component": HTMLMyComponentElement;
+        "pesonal-card": HTMLPesonalCardElement;
     }
 }
 declare namespace LocalJSX {
@@ -47,8 +59,14 @@ declare namespace LocalJSX {
          */
         "middle"?: string;
     }
+    interface PesonalCard {
+        "firstName"?: string;
+        "lastName"?: string;
+        "photo"?: string;
+    }
     interface IntrinsicElements {
         "my-component": MyComponent;
+        "pesonal-card": PesonalCard;
     }
 }
 export { LocalJSX as JSX };
@@ -56,6 +74,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "pesonal-card": LocalJSX.PesonalCard & JSXBase.HTMLAttributes<HTMLPesonalCardElement>;
         }
     }
 }
